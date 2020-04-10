@@ -11,6 +11,7 @@
   },
 
   "browser_action": {
+    "default_title": "Personal email tag generator",
     "default_icon": "icon.png",
     "default_popup": "popup.html"
   },
@@ -28,6 +29,6 @@
 
   "permissions": [
     "storage",
-    "<all_urls>"
+    "tabs"
   ]
 }
