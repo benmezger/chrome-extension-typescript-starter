@@ -6,18 +6,13 @@
 </head>
 
 <body>
-  Favorite color:
-  <select id="color">
-   <option value="red">red</option>
-   <option value="green">green</option>
-   <option value="blue">blue</option>
-   <option value="yellow">yellow</option>
-  </select>
+  <h1>Email tag generator</h1>
+  <div id="status"></div>
 
-  <label>
-    <input type="checkbox" id="like">
-    I like colors.
-  </label>
+  <form id="form">
+    <label for="email">Enter your email:</label>
+    <input type="email" id="email" name="email">
+  </form>
 
   <div id="status"></div>
   <button id="save">Save</button>
