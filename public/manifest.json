@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "Chrome Extension TypeScript Starter",
-  "description": "Chrome Extension, TypeScript, Visual Studio Code",
+  "name": "Personal email tag generator",
+  "description": "Generate personal email tags based on current tab",
   "version": "1.0",
 
   "options_ui": {
