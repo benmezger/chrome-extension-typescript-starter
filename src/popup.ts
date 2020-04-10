@@ -1,4 +1,4 @@
-function splitEmail(email: string): string[]{
+export function splitEmail(email: string): string[]{
   return email.split("@");
 }
 
