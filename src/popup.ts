@@ -9,10 +9,10 @@ document.addEventListener("DOMContentLoaded", function() {
   };
 
   chrome.tabs.query(queryInfo, tabs => {
-    var url = new URL(tabs[0].url);
+    const url = new URL(tabs[0].url);
     chrome.storage.sync.get(["email"], result => {
       const userEmail = splitEmail(result.email).splice(1)
-      var emailElem = document.getElementById('email');
+      const emailElem = document.getElementById('email');
       setTimeout(function () {
           emailElem.textContent = url.host + "@" + userEmail.join("");
       }, 750);
