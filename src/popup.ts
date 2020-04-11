@@ -1,3 +1,4 @@
+import * as clipboard from 'clipboard';
 import {splitEmail, createEmailTag} from "./email";
 import {IEmailAddress, IURL} from "./interfaces";
 
@@ -7,12 +8,13 @@ function setEmailElement(address: IEmailAddress, url: IURL){
   url.sld = createEmailTag(url);
 
   setTimeout(() => {
-   emailElem.textContent = url.sld + "@" + userEmail.join("");
+    emailElem.setAttribute('value',url.sld + "@" + userEmail.join(""));
   }, 250);
 }
   
 
 document.addEventListener("DOMContentLoaded", function () {
+  new clipboard('.btn');
   const queryInfo = {
     active: true,
     currentWindow: true

@@ -12,6 +12,7 @@
       "@types/chrome",
       "@types/node",
       "@types/jest",
+      "@types/clipboard",
       "webpack-env"
     ],
     "typeRoots": [
