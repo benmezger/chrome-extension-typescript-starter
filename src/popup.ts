@@ -1,9 +1,16 @@
-import * as psl from 'psl';
+import {splitEmail, createEmailTag} from "./email";
+import {IEmailAddress, IURL} from "./interfaces";
 
-export function splitEmail(email: string): string[]{
-  return email.split("@");
+function setEmailElement(address: IEmailAddress, url: IURL){
+  const userEmail: string[] = splitEmail(address).splice(1)
+  const emailElem: HTMLElement = document.getElementById('email');
+  url.sld = createEmailTag(url);
 
+  setTimeout(() => {
+   emailElem.textContent = url.sld + "@" + userEmail.join("");
+  }, 250);
 }
+  
 
 document.addEventListener("DOMContentLoaded", function () {
   const queryInfo = {
@@ -12,21 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   chrome.tabs.query(queryInfo, tabs => {
-    const url = new URL(tabs[0].url);
+    const host = {url: new URL(tabs[0].url).host, sld: null};
+
     chrome.storage.sync.get(["email"], result => {
-      const userEmail: string[] = splitEmail(result.email).splice(1)
-      const emailElem: HTMLElement = document.getElementById('email');
-      setTimeout(function () {
-        const tag: psl.ParsedDomain | psl.ParseError = psl.parse(url.host);
-        if (tag.error){
-            console.log(tag.error);
-            emailElem.textContent = "undefined";
-        }
-        else {
-            emailElem.textContent = tag['sld'] + "@" + userEmail.join("");
-        }
-      }, 750);
+      setEmailElement({email: result.email, host: null}, host);
     });
   });
 });
-

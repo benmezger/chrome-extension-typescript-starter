@@ -27,5 +27,5 @@ function restore_options() {
 }
 
 $('#save').click(save_options);
-$(restore_options); // document.addEventListener('DOMContentLoaded', restore_options);
+$(restore_options);
 
