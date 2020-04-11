@@ -12,12 +12,15 @@ module.exports = {
         path: path.join(__dirname, '../dist/js'),
         filename: '[name].js'
     },
+  /*
     optimization: {
         splitChunks: {
             name: 'vendor',
             chunks: "initial"
         }
     },
+    */
+    target: 'web',
     module: {
         rules: [
             {
@@ -28,7 +31,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js'],
     },
     plugins: [
         // exclude locale files in moment

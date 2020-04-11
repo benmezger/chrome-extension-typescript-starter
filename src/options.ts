@@ -21,7 +21,7 @@ function restore_options() {
   // Use default value color = 'red' and likesColor = true.
   chrome.storage.sync.get({
     email: null,
-  }, function(items: {email}) {
+  }, function(items: {email: string}) {
     $('#email').val(items.email);
   });
 }
