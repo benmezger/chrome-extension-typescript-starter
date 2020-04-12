@@ -1,20 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content=
-      "width=device-width, initial-scale=1">
-    <title>Email tag generator</title>
-  </head>
-  <body>
-    <h1>Email tag generator</h1>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content=
+  "width=device-width, initial-scale=1">
+  <title>Email tag generator</title>
+</head>
+<body>
+  <div class="d-flex p-2">
+    <div class="input-group">
 
-    <input id="email" value="">
-    <button class="btn" data-clipboard-target="#email">
-      <img src="icons/clippy.svg" alt="Copy to clipboard">
-    </button>
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Email</span>
+      </div>
+      <button type="button" class="form-control btn btn-success" id="btn-result">
+        <div id="result"></div>
+      </button>
+    </div>
+  </div>
 
-    <script type="module" src="js/popup.js"></script>
-  </body>
+  <div class="clip" data-clipboard-target=#email"></div>
+
+  <script type="module" src="js/popup.js"></script>
+</body>
 </html>
-

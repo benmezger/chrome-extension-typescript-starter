@@ -1,20 +1,31 @@
-import * as clipboard from 'clipboard';
+import 'bootstrap';
+import './scss/popup.scss';
+
 import {splitEmail, createEmailTag} from "./email";
 import {IEmailAddress, IURL} from "./interfaces";
 
+import * as clipboard from 'clipboard';
+      
+
 function setEmailElement(address: IEmailAddress, url: IURL){
   const userEmail: string[] = splitEmail(address).splice(1)
-  const emailElem: HTMLElement = document.getElementById('email');
+  const emailElem: HTMLElement = document.getElementById('result');
   url.sld = createEmailTag(url);
 
   setTimeout(() => {
-    emailElem.setAttribute('value',url.sld + "@" + userEmail.join(""));
+    emailElem.textContent = url.sld + "@" + userEmail.join("");
   }, 250);
 }
-  
+
+function copyOnClick(){
+  const clip = new clipboard("#result", {
+    text: function (trigger){
+      return trigger.textContent;
+    }
+  });
+}
 
 document.addEventListener("DOMContentLoaded", function () {
-  new clipboard('.btn');
   const queryInfo = {
     active: true,
     currentWindow: true
@@ -27,4 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
       setEmailElement({email: result.email, host: null}, host);
     });
   });
+
+  document.getElementById("btn-result").addEventListener("click", copyOnClick);
 });
+
+

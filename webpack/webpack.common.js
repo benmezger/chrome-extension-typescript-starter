@@ -27,7 +27,31 @@ module.exports = {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/
+            },
+          {
+        test: /\.(scss)$/,
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: 'css-loader'
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => {
+                return [
+                  require('autoprefixer')
+                ];
+              }
             }
+          },
+          {
+            loader: 'sass-loader'
+          }
+        ]
+          }
         ]
     },
     resolve: {
@@ -41,5 +65,5 @@ module.exports = {
           ],
           {context: 'public' }
         ),
-    ]
+    ],
 };
