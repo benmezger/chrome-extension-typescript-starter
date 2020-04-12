@@ -1,12 +1,12 @@
 interface IEmailAddress {
-    email: string
-    host: null | string
-};
+  email: string;
+  host: null | string;
+}
 
 interface IURL {
-    url: string
-    sld: null | string
-};
+  url: string;
+  sld: null | string;
+}
 
 
 export {IEmailAddress, IURL};
