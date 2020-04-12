@@ -3,7 +3,7 @@
 
   "name": "Personal email tag generator",
   "description": "Generate personal email tags based on current tab",
-  "version": "1.0",
+  "version": "1.1",
 
   "options_ui": {
     "page": "options.html",
