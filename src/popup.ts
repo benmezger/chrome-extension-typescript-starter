@@ -5,7 +5,7 @@ import {splitEmail, createEmailTag} from "./email";
 import {IEmailAddress, IURL} from "./interfaces";
 
 import * as clipboard from 'clipboard';
-
+import * as $ from 'jquery';
 
 function writeEmailElement(text: string, elementId: string){
   const emailElem: HTMLElement = document.getElementById(elementId);
@@ -50,6 +50,11 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   document.getElementById("btn-result").addEventListener("click", copyOnClick);
+
 });
+
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
 
 

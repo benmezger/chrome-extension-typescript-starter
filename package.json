@@ -16,6 +16,7 @@
     "url": "https://github.com/chibat/chrome-extension-typescript-starter.git"
   },
   "dependencies": {
+    "@popperjs/core": "^2.2.3",
     "@types/bootstrap": "^4.3.2",
     "@types/clipboard": "^2.0.1",
     "@types/node": "^13.11.1",
