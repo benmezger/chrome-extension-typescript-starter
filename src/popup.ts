@@ -5,16 +5,20 @@ import {splitEmail, createEmailTag} from "./email";
 import {IEmailAddress, IURL} from "./interfaces";
 
 import * as clipboard from 'clipboard';
+
+
+function writeEmailElement(text: string, elementId: string){
+  const emailElem: HTMLElement = document.getElementById(elementId);
+  setTimeout(() => {
+    emailElem.textContent = text
+  }, 10);
+}
       
 
 function setEmailElement(address: IEmailAddress, url: IURL){
   const userEmail: string[] = splitEmail(address).splice(1)
-  const emailElem: HTMLElement = document.getElementById('result');
   url.sld = createEmailTag(url);
-
-  setTimeout(() => {
-    emailElem.textContent = url.sld + "@" + userEmail.join("");
-  }, 250);
+  writeEmailElement(url.sld + "@" + userEmail.join(""), "result");
 }
 
 function copyOnClick(){
@@ -24,6 +28,7 @@ function copyOnClick(){
     }
   });
 }
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const queryInfo = {
@@ -35,7 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const host = {url: new URL(tabs[0].url).host, sld: null};
 
     chrome.storage.sync.get(["email"], result => {
-      setEmailElement({email: result.email, host: null}, host);
+      if (result.email == ""){
+        writeEmailElement("Missing email", "result");
+      }
+      else {
+        setEmailElement({email: result.email, host: null}, host);
+      }
     });
   });
 
