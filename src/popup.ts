@@ -16,9 +16,9 @@ function writeEmailElement(text: string, elementId: string){
       
 
 function setEmailElement(address: IEmailAddress, url: IURL){
-  const userEmail: string[] = splitEmail(address).splice(1)
+  const userEmail: string[] = splitEmail(address)
   url.sld = createEmailTag(url);
-  writeEmailElement(url.sld + "@" + userEmail.join(""), "result");
+  writeEmailElement(userEmail[0] + "+" + url.sld + "@" + userEmail[1], "result");
 }
 
 function copyOnClick(){
