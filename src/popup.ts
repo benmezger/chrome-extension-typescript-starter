@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const host = {url: new URL(tabs[0].url).host, sld: null};
 
     chrome.storage.sync.get(["email"], result => {
-      if (result.email == ""){
+      if (result.email == "" || result.email == undefined){
         writeEmailElement("Missing email", "result");
       }
       else {
