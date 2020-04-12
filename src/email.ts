@@ -5,6 +5,11 @@ function splitEmail(address: IEmailAddress): string[]{
   return address.email.split("@");
 }
 
+function validateEmail(email: string): boolean {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
 function createEmailTag(url: IURL, defaultVal?: string): string{
   const parsedUrl = parse(url.url);
   if (parsedUrl.isValid & parsedUrl.tldExists){
@@ -13,4 +18,4 @@ function createEmailTag(url: IURL, defaultVal?: string): string{
   return defaultVal || "unknown";
 }
 
-export {createEmailTag, splitEmail};
+export {createEmailTag, splitEmail, validateEmail};

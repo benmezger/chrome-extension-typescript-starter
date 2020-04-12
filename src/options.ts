@@ -1,17 +1,28 @@
+import {validateEmail} from "./email";
+
 import * as $ from 'jquery';
+
+function setStatus(msg: string){
+  const status = document.getElementById('status');
+  status.textContent = msg;
+  setTimeout(function() {
+      status.textContent = '';
+  }, 750);
+}
 
 // Saves options to chrome.storage.sync.
 function save_options() {
-    const email = $('#email').val();
+  const email = $('#email').val().toString();
+  if (!validateEmail(email)){
+    setStatus("Please enter your email.");
+  }
+  else {
     chrome.storage.sync.set({
         email: email
     }, function(){
-      const status = document.getElementById('status');
-      status.textContent = 'Options saved.';
-      setTimeout(function() {
-          status.textContent = '';
-      }, 750);
+      setStatus("option saved.");
     });
+  }
 }
 
 
